@@ -195,10 +195,11 @@ nav{
 .hpr-pct{flex:0 0 42px;text-align:right;font-family:var(--font-m);font-size:12px;color:var(--gold)}
 .hpr-streak{flex:0 0 50px;text-align:center;font-size:11px;color:var(--amber);font-family:var(--font-m)}
 /* ─── TRACKER GRID ────────────────────────────────────────── */
-.tracker-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.tracker-table{
-  border-collapse:separate;border-spacing:2px;
-  min-width:900px;
+.tracker-wrap {
+  overflow-x:auto;
+  overflow-y:auto;
+  max-height:calc(100vh - 120px);
+  -webkit-overflow-scrolling:touch;
 }
 .tracker-table th{
   background:var(--card2);
@@ -208,7 +209,7 @@ nav{
   text-align:center;padding:6px 4px;
   letter-spacing:.08em;
   text-transform:uppercase;
-  position:sticky;top:56px;z-index:2;
+  position:sticky;top:0px;z-index:2;
 }
 .tracker-table th.habit-col{
   text-align:left;padding-left:12px;
