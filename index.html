@@ -195,11 +195,10 @@ nav{
 .hpr-pct{flex:0 0 42px;text-align:right;font-family:var(--font-m);font-size:12px;color:var(--gold)}
 .hpr-streak{flex:0 0 50px;text-align:center;font-size:11px;color:var(--amber);font-family:var(--font-m)}
 /* ─── TRACKER GRID ────────────────────────────────────────── */
-.tracker-wrap {
-  overflow-x:auto;
-  overflow-y:auto;
-  max-height:calc(100vh - 120px);
-  -webkit-overflow-scrolling:touch;
+.tracker-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tracker-table{
+  border-collapse:separate;border-spacing:2px;
+  min-width:900px;
 }
 .tracker-table th{
   background:var(--card2);
@@ -209,7 +208,7 @@ nav{
   text-align:center;padding:6px 4px;
   letter-spacing:.08em;
   text-transform:uppercase;
-  position:sticky;top:0px;z-index:2;
+  position:sticky;top:56px;z-index:2;
 }
 .tracker-table th.habit-col{
   text-align:left;padding-left:12px;
@@ -827,7 +826,6 @@ const DEFAULT_HABITS = [
   {id:'h13',name:'Supplements',emoji:'💊'},
   {id:'h14',name:'Journaling',emoji:'✍️'},
   {id:'h15',name:'Instrument Practice',emoji:'🎵'},
-  {id:'h16',name:'Private Habit',emoji:'🔒',locked:true},
 ];
 
 const QUOTES = [
@@ -1116,7 +1114,6 @@ function quickToggle(habitId,y,m,d){
 // TRACKER
 // ═══════════════════════════════════════════════════════════════
 function renderTracker(){
-  if(h.locked) return;
   const y=viewYear,m=viewMonth;
   const days=daysInMonth(y,m);
   const today=new Date();
@@ -1535,9 +1532,6 @@ function renderManage(){
     return;
   }
   el.innerHTML=habits.map((h,i)=>`
-  if(h.locked) return `<div class="habit-chip" style="filter:blur(3px);pointer-events:none;opacity:0.5">
-  <div style="display:flex;align-items:center;gap:10px"><span>🔒</span><span class="chip-name">Hidden</span></div>
-</div>`;
     <div class="habit-chip">
       <div style="display:flex;align-items:center;gap:10px">
         <span style="font-size:18px">${h.emoji}</span>
